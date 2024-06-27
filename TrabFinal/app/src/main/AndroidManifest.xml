@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_notes"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_notes_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Agenda_Online"
+        tools:targetApi="31">
+        <activity
+            android:name=".Configuration.Configuration_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".Contacts.Update_Contact_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Contacts.Detail_Contact_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Contacts.Add_Contact_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Contacts.List_Contacts_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".UpdatePassword.Update_Password_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Profile.Edit_Image_Profile_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Notes.Detail_Note_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Notes.Update_Note_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Profile.Profile_User_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Notes.Important_Notes_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Notes.List_Notes_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Notes.Add_Note_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".MainMenuActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".RecordActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Charge_Activity"
+            android:exported="true"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/Configuration"
+        android:icon="@drawable/ic_config"
+        app:showAsAction="ifRoom"
+        android:title="@string/Configuration">
+
+    </item>
+
+    <item
+        android:id="@+id/Calendar"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_calendar_main"
+        android:title="@string/Calendar">
+
+    </item>
+
+    <item
+        android:id="@+id/Profile_User"
+        android:icon="@drawable/ic_profile_user"
+        android:title="@string/Profile_User"
+        app:showAsAction="ifRoom">
+
+    </item>
+
+
+</menu>

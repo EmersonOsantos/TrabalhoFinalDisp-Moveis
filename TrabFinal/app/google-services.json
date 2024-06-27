@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "781689818140",
+    "project_id": "trabalho-final-dm-3d49e",
+    "storage_bucket": "trabalho-final-dm-3d49e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781689818140:android:862310b0851f7197e2e3d9",
+        "android_client_info": {
+          "package_name": "com.emerson.trabfinal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgett0rCkkvTyjFSl98RxwbGUtBxlAMZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
