@@ -28,7 +28,6 @@ import com.emerson.trabfinal.LoginActivity;
 import com.emerson.trabfinal.R;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 public class Update_Password_Activity extends AppCompatActivity {
 

@@ -51,12 +51,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginRight="60dp"
+            android:importantForAccessibility="no"
             android:src="@drawable/instagram" />
 
         <ImageView
             android:id="@+id/facebook"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:importantForAccessibility="no"
             android:src="@drawable/facebook" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

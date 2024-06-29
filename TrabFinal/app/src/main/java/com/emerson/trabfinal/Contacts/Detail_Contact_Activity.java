@@ -2,6 +2,7 @@ package com.emerson.trabfinal.Contacts;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -9,6 +10,8 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -19,18 +22,45 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.emerson.trabfinal.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Detail_Contact_Activity extends AppCompatActivity {
+import java.io.IOException;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class Detail_Contact_Activity extends AppCompatActivity implements OnMapReadyCallback {
     ImageView Image_Contact_D;
     TextView Id_Contact_D, Uid_User_D, Name_Contact_D, Lastname_Contact_D, Mail_Contact_D, Age_Contact_D, Phone_Contact_D, Home_Contact_D;
 
     String id_c, uid_user, name_c, lastname_c, mail_c, age_c, phone_c, home_c;
-    Button Call_C, Message_C;
+    Button Call_C, Message_C,Endereco_C;
+    private GoogleMap mMap;
+
+    //private double lati = -34, longi = 151;private String titulo = "SYDNEY";
+    private double lati = -20.50232, longi = -54.61349;
+    private String titulo = "FACOM";
+    Address address;
+    private ResourceBundle bundle;
+
+    private Detail_Contact_Activity_binding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+       super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_contact);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+
+
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -70,12 +100,11 @@ public class Detail_Contact_Activity extends AppCompatActivity {
 
     private void InitVariables() {
         Image_Contact_D = findViewById(R.id.Image_Contact_D);
-        Id_Contact_D = findViewById(R.id.Id_Contact_D);
-        Uid_User_D = findViewById(R.id.Uid_User_D);
+
         Name_Contact_D = findViewById(R.id.Name_Contact_D);
-        Lastname_Contact_D = findViewById(R.id.Lastname_Contact_D);
+
         Mail_Contact_D = findViewById(R.id.Mail_Contact_D);
-        Age_Contact_D = findViewById(R.id.Age_Contact_D);
+
         Phone_Contact_D = findViewById(R.id.Phone_Contact_D);
         Home_Contact_D = findViewById(R.id.Home_Contact_D);
 
@@ -95,16 +124,16 @@ public class Detail_Contact_Activity extends AppCompatActivity {
         phone_c = bundle.getString("phone_c");
         age_c = bundle.getString("age_c");
         home_c = bundle.getString("home_c");
+        enderecoMaps();
     }
 
     private void SetDataContact() {
-        Id_Contact_D.setText(id_c);
-        Uid_User_D.setText(uid_user);
+
         Name_Contact_D.setText(name_c);
-        Lastname_Contact_D.setText(lastname_c);
+
         Mail_Contact_D.setText(mail_c);
         Phone_Contact_D.setText(phone_c);
-        Age_Contact_D.setText(age_c);
+
         Home_Contact_D.setText(home_c);
     }
 
@@ -166,5 +195,41 @@ public class Detail_Contact_Activity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return super.onSupportNavigateUp();
+    }
+
+    public void enderecoMaps() {
+        Geocoder geocoder=new Geocoder(getApplicationContext());
+        List<Address> list;
+        String endereco=home_c;
+        try {
+            list= geocoder.getFromLocationName(endereco,1);
+            if(list==null){
+                return;
+            }
+            Address address1=list.get(0);
+            lati=address1.getLatitude();
+            longi=address1.getLongitude();
+            titulo=name_c;
+
+
+        } catch (IOException e) {
+            double lati = -20.50232, longi = -54.61349;
+            String titulo = "FACOM";
+
+        }
+    }
+
+
+    @Override
+    public void onMapReady( GoogleMap googleMap) {
+        mMap = googleMap;
+        LatLng latLng = new LatLng(lati, longi);
+        mMap.addMarker(new MarkerOptions().position(latLng).title(titulo));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,
+                15));
+
     }
 }
